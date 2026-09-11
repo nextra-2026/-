@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070812">
+  <title>NEXTRA | Gaming Store</title>
+
+  <style>
+    :root{
+      --bg:#070812;
+      --card:#0e1320;
+      --card2:#151c2c;
+      --line:#252d40;
+      --primary:#7657ff;
+      --cyan:#00d9ff;
+      --green:#20d68b;
+      --red:#ff5265;
+      --yellow:#ffc857;
+      --text:#f5f7ff;
+      --muted:#8b96aa;
+      --shadow:0 15px 45px rgba(0,0,0,.35);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,Tahoma,sans-serif;
+      background:
+        radial-gradient(circle at top right,rgba(118,87,255,.12),transparent 35%),
+        radial-gradient(circle at bottom left,rgba(0,217,255,.07),transparent 30%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    button,input,select{
+      font:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(7,8,18,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .logo{
+      font-size:27px;
+      font-weight:900;
+      letter-spacing:2px;
+      background:linear-gradient(90deg,var(--primary),var(--cyan));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      color:var(--muted);
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .nav-actions{
+      display:flex;
+      gap:8px;
+    }
+
+    .icon-btn{
+      border:1px solid var(--line);
+      background:var(--card);
+      color:white;
+      border-radius:12px;
+      padding:10px 13px;
+      transition:.2s;
+    }
+
+    .icon-btn:hover{
+      border-color:var(--primary);
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:90px 0 70px;
+      text-align:center;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      padding:8px 15px;
+      border:1px solid rgba(118,87,255,.35);
+      background:rgba(118,87,255,.08);
+      border-radius:999px;
+      color:#bdb2ff;
+      margin-bottom:22px;
+    }
+
+    .hero h1{
+      font-size:clamp(42px,7vw,76px);
+      margin-bottom:12px;
+      background:linear-gradient(90deg,#fff,var(--primary),var(--cyan));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero h2{
+      font-size:clamp(22px,4vw,36px);
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:700px;
+      margin:auto;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    .hero-buttons{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+      border:0;
+      padding:13px 22px;
+      border-radius:12px;
+      color:white;
+      font-weight:bold;
+      transition:.2s;
+    }
+
+    .primary-btn{
+      background:linear-gradient(135deg,var(--primary),#5b3cf0);
+    }
+
+    .secondary-btn{
+      background:var(--card);
+      border:1px solid var(--line);
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:55px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      margin-bottom:25px;
+      gap:15px;
+    }
+
+    .section-head h2{
+      font-size:28px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      margin-top:6px;
+    }
+
+    /* CATEGORIES */
+
+    .categories{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+    }
+
+    .category{
+      background:linear-gradient(145deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:25px 18px;
+      text-align:center;
+      transition:.25s;
+    }
+
+    .category:hover{
+      transform:translateY(-5px);
+      border-color:var(--primary);
+      box-shadow:var(--shadow);
+    }
+
+    .category-icon{
+      font-size:38px;
+      margin-bottom:12px;
+    }
+
+    .category h3{
+      margin-bottom:8px;
+    }
+
+    .status{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .available{
+      background:rgba(32,214,139,.1);
+      color:var(--green);
+    }
+
+    .soon{
+      background:rgba(255,200,87,.1);
+      color:var(--yellow);
+    }
+
+    /* PRODUCTS */
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .product{
+      background:linear-gradient(145deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+      transition:.25s;
+    }
+
+    .product:hover{
+      transform:translateY(-4px);
+      border-color:rgba(118,87,255,.7);
+      box-shadow:var(--shadow);
+    }
+
+    .product-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .product-icon{
+      width:55px;
+      height:55px;
+      display:grid;
+      place-items:center;
+      border-radius:15px;
+      background:rgba(118,87,255,.1);
+      font-size:30px;
+    }
+
+    .product-category{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:18px;
+    }
+
+    .product h3{
+      margin:7px 0 15px;
+      font-size:19px;
+    }
+
+    .price{
+      font-size:24px;
+      font-weight:900;
+      color:white;
+    }
+
+    .price small{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:normal;
+    }
+
+    .product button{
+      width:100%;
+      margin-top:18px;
+      padding:12px;
+      border:0;
+      border-radius:11px;
+      background:var(--primary);
+      color:white;
+      font-weight:bold;
+    }
+
+    .product button:hover{
+      filter:brightness(1.12);
+    }
+
+    .custom-price{
+      color:var(--yellow);
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    /* FEATURES */
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+    }
+
+    .feature{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:23px;
+    }
+
+    .feature-icon{
+      font-size:30px;
+      margin-bottom:12px;
+    }
+
+    .feature p{
+      color:var(--muted);
+      line-height:1.7;
+      margin-top:8px;
+      font-size:14px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:40px;
+      padding:35px 0;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* MODALS */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:500;
+      background:rgba(0,0,0,.7);
+      backdrop-filter:blur(7px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .modal.active{
+      display:flex;
+    }
+
+    .modal-box{
+      width:min(560px,100%);
+      max-height:90vh;
+      overflow:auto;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .modal-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:22px;
+    }
+
+    .close{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-size:25px;
+    }
+
+    /* CART */
+
+    .cart-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .cart-item-info h4{
+      margin-bottom:5px;
+    }
+
+    .cart-item-info span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .cart-remove{
+      background:rgba(255,82,101,.1);
+      color:var(--red);
+      border:1px solid rgba(255,82,101,.2);
+      padding:7px 10px;
+      border-radius:9px;
+    }
+
+    .cart-total{
+      display:flex;
+      justify-content:space-between;
+      padding:20px 0;
+      font-size:21px;
+      font-weight:bold;
+    }
+
+    .empty{
+      text-align:center;
+      color:var(--muted);
+      padding:30px 0;
+    }
+
+    /* FORMS */
+
+    .form-group{
+      margin-bottom:15px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:7px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:13px;
+      border-radius:11px;
+      border:1px solid var(--line);
+      background:#090d17;
+      color:white;
+      outline:none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus{
+      border-color:var(--primary);
+    }
+
+    /* DASHBOARD */
+
+    .dashboard{
+      display:none;
+      padding:40px 0 80px;
+    }
+
+    .dashboard.active{
+      display:block;
+    }
+
+    .dashboard-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      margin-bottom:25px;
+    }
+
+    .admin-info{
+      color:var(--muted);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+      margin-bottom:25px;
+    }
+
+    .stat{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .stat strong{
+      display:block;
+      margin-top:10px;
+      font-size:28px;
+    }
+
+    .dashboard-tabs{
+      display:flex;
+      gap:8px;
+      overflow:auto;
+      margin-bottom:20px;
+    }
+
+    .dashboard-tabs button{
+      white-space:nowrap;
+      background:var(--card);
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:10px 15px;
+      border-radius:10px;
+    }
+
+    .dashboard-tabs button.active{
+      background:var(--primary);
+      color:white;
+      border-color:var(--primary);
+    }
+
+    .dash-panel{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+      display:none;
+    }
+
+    .dash-panel.active{
+      display:block;
+    }
+
+    .table-wrap{
+      overflow:auto;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:600px;
+    }
+
+    th,td{
+      text-align:right;
+      padding:13px;
+      border-bottom:1px solid var(--line);
+    }
+
+    th{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    td{
+      font-size:14px;
+    }
+
+    .table-btn{
+      border:1px solid var(--line);
+      background:var(--card2);
+      color:white;
+      padding:7px 10px;
+      border-radius:8px;
+      margin:2px;
+    }
+
+    .danger{
+      color:var(--red);
+    }
+
+    /* TOAST */
+
+    .toast{
+      position:fixed;
+      bottom:25px;
+      left:50%;
+      transform:translateX(-50%) translateY(100px);
+      background:#111827;
+      border:1px solid var(--line);
+      padding:13px 18px;
+      border-radius:12px;
+      z-index:1000;
+      opacity:0;
+      transition:.3s;
+    }
+
+    .toast.show{
+      transform:translateX(-50%) translateY(0);
+      opacity:1;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+      .categories,
+      .features{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .products{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+      .hero{
+        padding:65px 0 45px;
+      }
+
+      .categories,
+      .products,
+      .features,
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        min-height:64px;
+      }
+
+      .logo{
+        font-size:23px;
+      }
+
+      .nav-actions .icon-btn{
+        padding:9px;
+      }
+
+      .section-head{
+        display:block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="#" class="logo">NEXTRA</a>
+
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#categories">الأقسام</a>
+      <a href="#products">المنتجات</a>
+      <a href="#features">المميزات</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="openAccount()">👤</button>
+      <button class="icon-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+      <button class="icon-btn" onclick="openAdmin()">⚙️</button>
+    </div>
+
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-badge">🎮 NEXTRA GAMING STORE</div>
+
+      <h1>NEXTRA</h1>
+
+      <h2>Gaming Store</h2>
+
+      <p>
+        متجرك للألعاب والخدمات الرقمية.
+        اختار الخدمة المناسبة، أضف طلبك للسلة،
+        وأكمل طلبك بسهولة وسرعة.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#products" class="primary-btn">🛒 تصفح المنتجات</a>
+        <a href="#categories" class="secondary-btn">🎮 الأقسام</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+
+  <section id="categories">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <h2>الأقسام</h2>
+          <p>اختار القسم اللي محتاجه</p>
+        </div>
+      </div>
+
+      <div class="categories">
+
+        <div class="category">
+          <div class="category-icon">🔥</div>
+          <h3>Free Fire</h3>
+          <span class="status available">متاح</span>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🎮</div>
+          <h3>PlayStation</h3>
+          <span class="status available">متاح</span>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">💻</div>
+          <h3>PC Gaming</h3>
+          <span class="status soon">قريبًا</span>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">💳</div>
+          <h3>Top Up</h3>
+          <span class="status available">متاح</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+
+  <section id="products">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <h2>المنتجات</h2>
+          <p>الأسعار الرسمية الحالية</p>
+        </div>
+      </div>
+
+      <div class="products" id="productsGrid"></div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+
+  <section id="features">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <h2>ليه NEXTRA؟</h2>
+          <p>تجربة بسيطة واحترافية</p>
+        </div>
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>سرعة التنفيذ</h3>
+          <p>تنظيم الطلبات ومتابعتها بسهولة.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔐</div>
+          <h3>حساب آمن</h3>
+          <p>نظام حسابات وصلاحيات للإدارة.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⭐</div>
+          <h3>نقاط العملاء</h3>
+          <p>اكسب نقاط مع الطلبات المكتملة.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <h3>دعم ومتابعة</h3>
+          <p>متابعة حالة الطلب والتواصل بسهولة.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- DASHBOARD -->
+
+<section class="dashboard" id="dashboard">
+  <div class="container">
+
+    <div class="dashboard-top">
+      <div>
+        <h2>لوحة التحكم</h2>
+        <div class="admin-info" id="adminInfo"></div>
+      </div>
+
+      <button class="secondary-btn" onclick="logoutAdmin()">
+        تسجيل خروج
+      </button>
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+        <span>الطلبات</span>
+        <strong id="statOrders">0</strong>
+      </div>
+
+      <div class="stat">
+        <span>الإيرادات</span>
+        <strong id="statRevenue">0 ج</strong>
+      </div>
+
+      <div class="stat">
+        <span>الربح الداخلي</span>
+        <strong id="statProfit">0 ج</strong>
+      </div>
+
+      <div class="stat">
+        <span>العملاء</span>
+        <strong id="statCustomers">0</strong>
+      </div>
+
+    </div>
+
+    <div class="dashboard-tabs">
+
+      <button class="active" data-tab="overview" onclick="switchTab('overview')">
+        نظرة عامة
+      </button>
+
+      <button data-tab="products" onclick="switchTab('products')">
+        المنتجات
+      </button>
+
+      <button data-tab="orders" onclick="switchTab('orders')">
+        الطلبات
+      </button>
+
+      <button data-tab="customers" onclick="switchTab('customers')">
+        العملاء
+      </button>
+
+      <button data-tab="ads" onclick="switchTab('ads')">
+        الإعلانات
+      </button>
+
+      <button data-tab="roles" onclick="switchTab('roles')">
+        الصلاحيات
+      </button>
+
+      <button data-tab="ai" onclick="switchTab('ai')">
+        AI
+      </button>
+
+    </div>
+
+    <div class="dash-panel active" id="panel-overview">
+      <h3>نظرة عامة</h3>
+      <p style="color:var(--muted);margin-top:10px">
+        لوحة تحكم NEXTRA جاهزة لإدارة المتجر والطلبات والعملاء.
+      </p>
+    </div>
+
+    <div class="dash-panel" id="panel-products">
+
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+        <h3>إدارة المنتجات</h3>
+
+        <button class="primary-btn" onclick="openAddProduct()">
+          + إضافة منتج
+        </button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المنتج</th>
+              <th>القسم</th>
+              <th>السعر</th>
+              <th>التكلفة</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody id="productsTable"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="dash-panel" id="panel-orders">
+
+      <h3 style="margin-bottom:18px">إدارة الطلبات</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>رقم الطلب</th>
+              <th>العميل</th>
+              <th>الإجمالي</th>
+              <th>الحالة</th>
+              <th>التاريخ</th>
+            </tr>
+          </thead>
+
+          <tbody id="ordersTable"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="dash-panel" id="panel-customers">
+
+      <h3 style="margin-bottom:18px">العملاء</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th>التواصل</th>
+              <th>النقاط</th>
+            </tr>
+          </thead>
+
+          <tbody id="customersTable"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="dash-panel" id="panel-ads">
+
+      <h3>الإعلانات</h3>
+
+      <p style="color:var(--yellow);margin-top:12px">
+        🚧 نظام الإعلانات قيد التجهيز.
+      </p>
+
+      <p style="color:var(--muted);margin-top:8px">
+        سيتم إضافة مراجعة الإعلانات قبل النشر والإعلانات المميزة المدفوعة.
+      </p>
+
+    </div>
+
+    <div class="dash-panel" id="panel-roles">
+
+      <h3>صلاحيات الإدارة</h3>
+
+      <div style="display:grid;gap:12px;margin-top:18px">
+
+        <div class="feature">
+          <h3>👑 Admin</h3>
+          <p>حساب إداري واحد فقط بصلاحيات كاملة على المتجر.</p>
+        </div>
+
+        <div class="feature">
+          <h3>🔒 نظام الإدارة</h3>
+          <p>لا يوجد Manager أو Supervisor أو Staff. كل صلاحيات الإدارة محمية من الـBackend.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="dash-panel" id="panel-ai">
+
+      <h3>🤖 AI Assistant</h3>
+
+      <p style="color:var(--yellow);margin-top:12px">
+        🚧 المساعد الذكي قيد التجهيز.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CART MODAL -->
+
+<div class="modal" id="cartModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>🛒 السلة</h2>
+      <button class="close" onclick="closeModal('cartModal')">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+      <span>الإجمالي</span>
+      <span id="cartTotal">0 ج</span>
+    </div>
+
+    <button class="primary-btn" style="width:100%" onclick="checkout()">
+      تأكيد الطلب
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ACCOUNT MODAL -->
+
+<div class="modal" id="accountModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>👤 الحساب</h2>
+      <button class="close" onclick="closeModal('accountModal')">×</button>
+    </div>
+
+    <div id="accountContent"></div>
+
+  </div>
+
+</div>
+
+<!-- ADMIN LOGIN -->
+
+<div class="modal" id="adminModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>🔐 دخول الإدارة</h2>
+      <button class="close" onclick="closeModal('adminModal')">×</button>
+    </div>
+
+    <form onsubmit="loginAdmin(event)">
+
+      <div class="form-group">
+        <label>اسم المستخدم</label>
+        <input id="adminUsername" autocomplete="username" required>
+      </div>
+
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input id="adminPassword" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button class="primary-btn" style="width:100%" type="submit">
+        دخول
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- ADD PRODUCT -->
+
+<div class="modal" id="addProductModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>إضافة منتج</h2>
+      <button class="close" onclick="closeModal('addProductModal')">×</button>
+    </div>
+
+    <form onsubmit="addProduct(event)">
+
+      <div class="form-group">
+        <label>اسم المنتج</label>
+        <input id="newProductName" required>
+      </div>
+
+      <div class="form-group">
+        <label>القسم</label>
+        <input id="newProductCategory" value="Free Fire" required>
+      </div>
+
+      <div class="form-group">
+        <label>السعر</label>
+        <input id="newProductPrice" type="number" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label>التكلفة الداخلية</label>
+        <input id="newProductCost" type="number" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label>الأيقونة</label>
+        <input id="newProductIcon" value="🎮" maxlength="4">
+      </div>
+
+      <button class="primary-btn" style="width:100%" type="submit">
+        إضافة
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="container">
+    <div class="logo">NEXTRA</div>
+    <p style="margin-top:10px">
+      Gaming Store © 2026
+    </p>
+  </div>
+</footer>
+
+<script>
+
+  /* =========================
+     CONFIG
+  ========================= */
+
+  const WHATSAPP_NUMBER = "201017449125";
+
+  /*
+    Backend:
+    غيّر الرابط عند رفع الـ Backend أونلاين.
+  */
+  // Set this to your deployed backend URL before publishing the frontend.
+  const BACKEND_URL = window.NEXTRA_BACKEND_URL || "https://nextra-backend-mqiy.onrender.com";
+
+  // Product/order/customer data is now stored by the backend.
+  let products = [];
+
+  let cart = JSON.parse(localStorage.getItem("nextra_cart") || "[]");
+
+  let users = JSON.parse(localStorage.getItem("nextra_users") || "[]");
+
+  let orders = [];
+
+  let currentUser = JSON.parse(localStorage.getItem("nextra_current_user") || "null");
+
+  let adminToken = localStorage.getItem("nextra_admin_token") || "";
+
+  let adminData = JSON.parse(localStorage.getItem("nextra_admin_data") || "null");
+
+  /* =========================
+     HELPERS
+  ========================= */
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function saveAll(){
+    localStorage.setItem("nextra_cart", JSON.stringify(cart));
+    localStorage.setItem("nextra_users", JSON.stringify(users));
+    if(currentUser){
+      localStorage.setItem("nextra_current_user", JSON.stringify(currentUser));
+    }else{
+      localStorage.removeItem("nextra_current_user");
+    }
+  }
+
+  async function api(path, options = {}){
+    const headers = { ...(options.headers || {}) };
+    if(options.body && !headers["Content-Type"]) headers["Content-Type"] = "application/json";
+    if(adminToken) headers.Authorization = `Bearer ${adminToken}`;
+    const response = await fetch(`${BACKEND_URL}${path}`, { ...options, headers });
+    let data = {};
+    try { data = await response.json(); } catch {}
+    if(!response.ok) throw new Error(data.message || "حدث خطأ في الاتصال بالسيرفر");
+    return data;
+  }
+
+  async function loadRemoteData(){
+    try{
+      const data = await api("/api/products");
+      products = Array.isArray(data.products) ? data.products : [];
+      renderProducts();
+      renderCart();
+      updateCartCount();
+    }catch(error){
+      console.error("NEXTRA data load:", error);
+      products = [];
+      renderProducts();
+      showToast("تعذر تحميل المنتجات من السيرفر");
+    }
+  }
+
+  async function loadAdminData(){
+    if(!adminToken) return;
+    try{
+      const [ordersData, customersData] = await Promise.all([api("/api/orders"), api("/api/customers")]);
+      orders = ordersData.orders || [];
+      users = customersData.customers || users;
+      updateDashboard();
+    }catch(error){
+      console.error("NEXTRA admin data:", error);
+    }
+  }
+
+
+  function showToast(message){
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },2500);
+
+  }
+
+
+  function openModal(id){
+
+    document
+      .getElementById(id)
+      .classList.add("active");
+
+  }
+
+
+  function closeModal(id){
+
+    document
+      .getElementById(id)
+      .classList.remove("active");
+
+  }
+
+
+  /* =========================
+     PRODUCTS RENDER
+  ========================= */
+
+  function renderProducts(){
+
+    const grid =
+      document.getElementById("productsGrid");
+
+    grid.innerHTML = products.map(product => {
+
+      const priceHTML =
+        product.customPrice
+          ? `<div class="custom-price">السعر حسب الحدث</div>`
+          : `<div class="price">${product.price} <small>جنيه</small></div>`;
+
+      return `
+
+        <div class="product">
+
+          <div class="product-top">
+
+            <div class="product-icon">
+              ${escapeHTML(product.icon)}
+            </div>
+
+            <span class="status available">
+              متاح
+            </span>
+
+          </div>
+
+          <div class="product-category">
+            ${escapeHTML(product.category)}
+          </div>
+
+          <h3>
+            ${escapeHTML(product.name)}
+          </h3>
+
+          ${priceHTML}
+
+          <button onclick='addToCart(${JSON.stringify(product.id)})'>
+            🛒 إضافة للسلة
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+  }
+
+
+  /* =========================
+     CART
+  ========================= */
+
+  function addToCart(productId){
+
+    const product =
+      products.find(
+        p => p.id === productId
+      );
+
+    if(!product) return;
+
+
+    if(product.customPrice){
+
+      alert(
+        "تختيم الأحداث سعره حسب الحدث. تواصل معنا لتحديد السعر."
+      );
+
+      return;
+    }
+
+
+    const existing =
+      cart.find(
+        item => item.id === productId
+      );
+
+
+    if(existing){
+
+      existing.qty++;
+
+    }else{
+
+      cart.push({
+        id:product.id,
+        name:product.name,
+        price:product.price,
+        icon:product.icon,
+        qty:1
+      });
+
+    }
+
+
+    saveAll();
+    renderCart();
+    updateCartCount();
+
+    showToast("تمت إضافة المنتج للسلة 🛒");
+
+  }
+
+
+  function removeFromCart(productId){
+
+    cart =
+      cart.filter(
+        item => item.id !== productId
+      );
+
+    saveAll();
+    renderCart();
+    updateCartCount();
+
+  }
+
+
+  function updateCartCount(){
+
+    const count =
+      cart.reduce(
+        (sum,item)=>sum + item.qty,
+        0
+      );
+
+    document.getElementById(
+      "cartCount"
+    ).textContent = count;
+
+  }
+
+
+  function getCartTotal(){
+
+    return cart.reduce(
+      (sum,item)=>
+        sum + (item.price * item.qty),
+      0
+    );
+
+  }
+
+
+  function renderCart(){
+
+    const box =
+      document.getElementById("cartItems");
+
+    if(cart.length === 0){
+
+      box.innerHTML =
+        `<div class="empty">
+          السلة فارغة حاليًا 🛒
+        </div>`;
+
+      document.getElementById(
+        "cartTotal"
+      ).textContent = "0 ج";
+
+      return;
+    }
+
+
+    box.innerHTML =
+      cart.map(item => `
+
+        <div class="cart-item">
+
+          <div class="cart-item-info">
+
+            <h4>
+              ${escapeHTML(item.icon)}
+              ${escapeHTML(item.name)}
+            </h4>
+
+            <span>
+              ${item.qty} × ${item.price} ج
+            </span>
+
+          </div>
+
+          <button
+            class="cart-remove"
+            onclick="removeFromCart(${item.id})">
+            حذف
+          </button>
+
+        </div>
+
+      `).join("");
+
+
+    document.getElementById(
+      "cartTotal"
+    ).textContent =
+      `${getCartTotal()} ج`;
+
+  }
+
+
+  function openCart(){
+
+    renderCart();
+    openModal("cartModal");
+
+  }
+
+
+  /* =========================
+     ACCOUNT
+  ========================= */
+
+  function openAccount(){
+
+    const box =
+      document.getElementById("accountContent");
+
+
+    if(currentUser){
+
+      box.innerHTML = `
+
+        <div style="text-align:center">
+
+          <div style="font-size:45px;margin-bottom:12px">
+            👤
+          </div>
+
+          <h3>
+            ${escapeHTML(currentUser.name)}
+          </h3>
+
+          <p style="color:var(--muted);margin:8px 0 20px">
+            ${escapeHTML(currentUser.contact)}
+          </p>
+
+          <div class="feature">
+
+            <h3>⭐ النقاط</h3>
+
+            <strong style="font-size:30px">
+              ${currentUser.points || 0}
+            </strong>
+
+          </div>
+
+          <button
+            class="secondary-btn"
+            style="width:100%;margin-top:15px"
+            onclick="logoutUser()">
+
+            تسجيل الخروج
+
+          </button>
+
+        </div>
+
+      `;
+
+    }else{
+
+      box.innerHTML = `
+
+        <form onsubmit="loginUser(event)">
+
+          <div class="form-group">
+
+            <label>الاسم</label>
+
+            <input
+              id="userName"
+              required
+              maxlength="60">
+
+          </div>
+
+          <div class="form-group">
+
+            <label>رقم الهاتف أو وسيلة التواصل</label>
+
+            <input
+              id="userContact"
+              required
+              maxlength="80">
+
+          </div>
+
+          <button
+            class="primary-btn"
+            style="width:100%"
+            type="submit">
+
+            إنشاء / دخول
+
+          </button>
+
+        </form>
+
+      `;
+
+    }
+
+    openModal("accountModal");
+
+  }
+
+
+  async function loginUser(event){
+
+    event.preventDefault();
+
+
+    const name =
+      document
+        .getElementById("userName")
+        .value.trim();
+
+    const contact =
+      document
+        .getElementById("userContact")
+        .value.trim();
+
+
+    try{
+      const data = await api("/api/customers", {
+        method:"POST",
+        body:JSON.stringify({name, contact})
+      });
+      const user = data.customer;
+      users = users.filter(u => u.contact !== contact);
+      users.push(user);
+      currentUser = user;
+      saveAll();
+    }catch(error){
+      alert(error.message || "تعذر حفظ بيانات العميل");
+      return;
+    }
+
+    closeModal("accountModal");
+
+    showToast("تم تسجيل الدخول 👤");
+
+  }
+
+
+  function logoutUser(){
+
+    currentUser = null;
+
+    saveAll();
+
+    closeModal("accountModal");
+
+    showToast("تم تسجيل الخروج");
+
+  }
+
+
+  /* =========================
+     CHECKOUT
+  ========================= */
+
+  async function checkout(){
+
+    if(cart.length === 0){
+
+      alert("السلة فارغة.");
+
+      return;
+    }
+
+
+    if(!currentUser){
+
+      closeModal("cartModal");
+
+      openAccount();
+
+      alert(
+        "سجل دخولك أولًا لإتمام الطلب."
+      );
+
+      return;
+    }
+
+
+    const total =
+      getCartTotal();
+
+
+    const order = {
+
+      id:
+        "NX-" +
+        String(Date.now()).slice(-8),
+
+      customer:
+        currentUser.name,
+
+      contact:
+        currentUser.contact,
+
+      items:
+        cart.map(item => ({
+          id:item.id,
+          name:item.name,
+          price:item.price,
+          qty:item.qty
+        })),
+
+      total,
+
+      status:"جديد",
+
+      date:
+        new Date().toLocaleString("ar-EG"),
+
+      pointsAwarded:0
+
+    };
+
+
+    let savedOrder = order;
+
+    try{
+      const data = await api("/api/orders", {
+        method:"POST",
+        body:JSON.stringify(order)
+      });
+      savedOrder = data.order || order;
+    }catch(error){
+      alert(error.message || "تعذر حفظ الطلب على السيرفر");
+      return;
+    }
+
+    orders.unshift(savedOrder);
+    cart = [];
+
+    saveAll();
+
+    renderCart();
+    updateCartCount();
+
+    closeModal("cartModal");
+    const finalOrder = savedOrder;
+
+
+    let message =
+      `🎮 *طلب جديد من NEXTRA*%0A%0A` +
+      `🧾 رقم الطلب: ${finalOrder.id}%0A` +
+      `👤 العميل: ${finalOrder.customer}%0A` +
+      `📞 التواصل: ${finalOrder.contact}%0A%0A`;
+
+    finalOrder.items.forEach(item => {
+
+      message +=
+        `• ${item.name} × ${item.qty} = ${item.price * item.qty} ج%0A`;
+
+    });
+
+    message +=
+      `%0A💰 الإجمالي: ${finalOrder.total} ج`;
+
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
+      "_blank"
+    );
+
+
+    showToast(
+      `تم إنشاء الطلب ${finalOrder.id} ✅`
+    );
+
+
+    updateDashboard();
+
+  }
+
+
+  /* =========================
+     ADMIN
+  ========================= */
+
+  function openAdmin(){
+
+    if(adminToken){
+
+      verifyAdminSession();
+
+    }else{
+
+      openModal("adminModal");
+
+    }
+
+  }
+
+
+  async function loginAdmin(event){
+
+    event.preventDefault();
+
+
+    const username =
+      document
+        .getElementById("adminUsername")
+        .value.trim();
+
+    const password =
+      document
+        .getElementById("adminPassword")
+        .value;
+
+
+    try{
+
+      const response =
+        await fetch(
+          `${BACKEND_URL}/api/admin/login`,
+          {
+            method:"POST",
+            headers:{
+              "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+              username,
+              password
+            })
+          }
+        );
+
+
+      const data =
+        await response.json();
+
+
+      if(!response.ok || !data.success){
+
+        throw new Error(
+          data.message ||
+          "بيانات الدخول غير صحيحة"
+        );
+
+      }
+
+
+      adminToken = data.token;
+      adminData = data.admin;
+
+
+      localStorage.setItem(
+        "nextra_admin_token",
+        adminToken
+      );
+
+      localStorage.setItem(
+        "nextra_admin_data",
+        JSON.stringify(adminData)
+      );
+
+
+      closeModal("adminModal");
+
+      showDashboard();
+      await loadAdminData();
+
+      showToast("تم تسجيل دخول الإدارة 🔐");
+
+    }catch(error){
+
+      alert(
+        error.message ||
+        "تعذر الاتصال بالسيرفر."
+      );
+
+    }
+
+  }
+
+
+  async function verifyAdminSession(){
+
+    try{
+
+      const response =
+        await fetch(
+          `${BACKEND_URL}/api/admin/me`,
+          {
+            headers:{
+              Authorization:
+                `Bearer ${adminToken}`
+            }
+          }
+        );
+
+
+      if(!response.ok){
+
+        throw new Error();
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      adminData = {
+        ...(adminData || {}),
+        ...data.admin,
+        permissions:data.permissions
+      };
+
+
+      localStorage.setItem(
+        "nextra_admin_data",
+        JSON.stringify(adminData)
+      );
+
+
+      showDashboard();
+      await loadAdminData();
+
+    }catch{
+
+      logoutAdmin();
+
+    }
+
+  }
+
+
+  function hasPermission(permission){
+
+    return Boolean(
+      adminData &&
+      Array.isArray(adminData.permissions) &&
+      adminData.permissions.includes(permission)
+    );
+
+  }
+
+
+  function showDashboard(){
+
+    document
+      .getElementById("dashboard")
+      .classList.add("active");
+
+
+    document
+      .getElementById("home")
+      .style.display = "none";
+
+
+    document
+      .getElementById("dashboard")
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+
+    document.getElementById(
+      "adminInfo"
+    ).textContent =
+      `${adminData?.username || ""} • ${adminData?.role || ""}`;
+
+
+    applyAdminPermissions();
+
+    updateDashboard();
+
+  }
+
+
+  function logoutAdmin(){
+
+    adminToken = "";
+    adminData = null;
+
+
+    localStorage.removeItem(
+      "nextra_admin_token"
+    );
+
+    localStorage.removeItem(
+      "nextra_admin_data"
+    );
+
+
+    document
+      .getElementById("dashboard")
+      .classList.remove("active");
+
+
+    document
+      .getElementById("home")
+      .style.display = "";
+
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+
+  function applyAdminPermissions(){
+
+    document
+      .querySelectorAll(".dashboard-tabs button")
+      .forEach(button => {
+
+        const permission =
+          button.dataset.tab;
+
+        button.style.display =
+          hasPermission(permission)
+            ? ""
+            : "none";
+
+      });
+
+
+    document
+      .querySelectorAll(".dash-panel")
+      .forEach(panel => {
+
+        const permission =
+          panel.id.replace(
+            "panel-",
+            ""
+          );
+
+        panel.style.display =
+          hasPermission(permission)
+            ? ""
+            : "none";
+
+      });
+
+
+    if(hasPermission("overview")){
+
+      switchTab("overview");
+
+    }else{
+
+      const first =
+        adminData?.permissions?.[0];
+
+      if(first){
+
+        switchTab(first);
+
+      }
+
+    }
+
+  }
+
+
+  /* =========================
+     DASHBOARD
+  ========================= */
+
+  function updateDashboard(){
+
+    const revenue =
+      orders.reduce(
+        (sum,order)=>
+          sum + Number(order.total || 0),
+        0
+      );
+
+
+    let profit = 0;
+
+
+    orders.forEach(order => {
+
+      finalOrder.items.forEach(item => {
+
+        const product =
+          products.find(
+            p => p.id === item.id
+          );
+
+        if(product){
+
+          profit +=
+            (Number(item.price) -
+             Number(product.cost || 0))
+            * Number(item.qty || 1);
+
+        }
+
+      });
+
+    });
+
+
+    document.getElementById(
+      "statOrders"
+    ).textContent =
+      orders.length;
+
+
+    document.getElementById(
+      "statRevenue"
+    ).textContent =
+      `${revenue} ج`;
+
+
+    document.getElementById(
+      "statProfit"
+    ).textContent =
+      `${profit} ج`;
+
+
+    document.getElementById(
+      "statCustomers"
+    ).textContent =
+      users.length;
+
+
+    renderProductsTable();
+    renderOrdersTable();
+    renderCustomersTable();
+
+  }
+
+
+  function switchTab(tab){
+
+    if(!hasPermission(tab)){
+
+      return;
+
+    }
+
+
+    document
+      .querySelectorAll(".dashboard-tabs button")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.tab === tab
+        );
+
+      });
+
+
+    document
+      .querySelectorAll(".dash-panel")
+      .forEach(panel => {
+
+        panel.classList.toggle(
+          "active",
+          panel.id === `panel-${tab}`
+        );
+
+      });
+
+  }
+
+
+  /* =========================
+     PRODUCTS ADMIN
+  ========================= */
+
+  function renderProductsTable(){
+
+    const tbody =
+      document.getElementById(
+        "productsTable"
+      );
+
+
+    if(!tbody) return;
+
+
+    tbody.innerHTML =
+      products.map(product => `
+
+        <tr>
+
+          <td>
+            ${escapeHTML(product.icon)}
+            ${escapeHTML(product.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(product.category)}
+          </td>
+
+          <td>
+            ${
+              product.customPrice
+                ? "حسب الحدث"
+                : product.price + " ج"
+            }
+          </td>
+
+          <td>
+            ${
+              product.customPrice
+                ? "-"
+                : product.cost + " ج"
+            }
+          </td>
+
+          <td>
+
+            ${
+              `
+                <button
+                  class="table-btn danger"
+                  onclick='deleteProduct(${JSON.stringify(product.id)})'>
+                  حذف
+                </button>
+              `
+            }
+
+          </td>
+
+        </tr>
+
+      `).join("");
+
+  }
+
+
+  function openAddProduct(){
+
+    openModal(
+      "addProductModal"
+    );
+
+  }
+
+
+  async function addProduct(event){
+
+    event.preventDefault();
+
+
+    const product = {
+
+      id:
+        Date.now(),
+
+      name:
+        document
+          .getElementById("newProductName")
+          .value.trim(),
+
+      category:
+        document
+          .getElementById("newProductCategory")
+          .value.trim(),
+
+      price:
+        Number(
+          document
+            .getElementById("newProductPrice")
+            .value
+        ),
+
+      cost:
+        Number(
+          document
+            .getElementById("newProductCost")
+            .value
+        ),
+
+      icon:
+        document
+          .getElementById("newProductIcon")
+          .value.trim() || "🎮"
+
+    };
+
+
+    try{
+      const data = await api("/api/products", {
+        method:"POST",
+        body:JSON.stringify(product)
+      });
+      products.push(data.product);
+    }catch(error){
+      alert(error.message || "تعذر إضافة المنتج");
+      return;
+    }
+
+    closeModal(
+      "addProductModal"
+    );
+
+
+    event.target.reset();
+
+    updateDashboard();
+    renderProducts();
+
+    showToast(
+      "تمت إضافة المنتج ✅"
+    );
+
+  }
+
+
+  async function deleteProduct(productId){
+
+    if(!confirm("حذف المنتج؟")){
+
+      return;
+
+    }
+
+
+    try{
+      await api(`/api/products/${encodeURIComponent(productId)}`, { method:"DELETE" });
+      products = products.filter(p => String(p.id) !== String(productId));
+    }catch(error){
+      alert(error.message || "تعذر حذف المنتج");
+      return;
+    }
+
+    updateDashboard();
+    renderProducts();
+
+    showToast(
+      "تم حذف المنتج"
+    );
+
+  }
+
+
+  /* =========================
+     ORDERS ADMIN
+  ========================= */
+
+  function renderOrdersTable(){
+
+    const tbody =
+      document.getElementById(
+        "ordersTable"
+      );
+
+
+    if(!tbody) return;
+
+
+    if(orders.length === 0){
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="5">
+            لا توجد طلبات حاليًا.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    tbody.innerHTML =
+      orders.slice().reverse().map(order => `
+
+        <tr>
+
+          <td>
+            ${escapeHTML(order.id)}
+          </td>
+
+          <td>
+            ${escapeHTML(order.customer)}
+          </td>
+
+          <td>
+            ${order.total} ج
+          </td>
+
+          <td>
+
+            <select
+              onchange="changeOrderStatus('${escapeHTML(order.id)}',this.value)"
+              style="
+                background:#090d17;
+                color:white;
+                border:1px solid var(--line);
+                border-radius:8px;
+                padding:7px;
+              ">
+
+              ${[
+                "جديد",
+                "قيد التنفيذ",
+                "مكتمل",
+                "ملغي"
+              ].map(status => `
+                <option
+                  ${order.status === status ? "selected" : ""}
+                  value="${status}">
+                  ${status}
+                </option>
+              `).join("")}
+
+            </select>
+
+          </td>
+
+          <td>
+            ${escapeHTML(order.date)}
+          </td>
+
+        </tr>
+
+      `).join("");
+
+  }
+
+
+  async function changeOrderStatus(orderId,status){
+
+    const order =
+      orders.find(
+        o => o.id === orderId
+      );
+
+
+    if(!order) return;
+
+
+    const oldStatus =
+      order.status;
+
+
+    order.status = status;
+
+
+    /*
+      النقاط تمنح مرة واحدة فقط
+      عند اكتمال الطلب.
+    */
+
+    if(
+      status === "مكتمل" &&
+      oldStatus !== "مكتمل" &&
+      !order.pointsAwarded
+    ){
+
+      const points =
+        Math.max(
+          1,
+          Math.floor(
+            Number(order.total || 0) / 10
+          )
+        );
+
+
+      order.pointsAwarded =
+        points;
+
+
+      const user =
+        users.find(
+          u =>
+            u.contact === order.contact
+        );
+
+
+      if(user){
+
+        user.points =
+          Number(user.points || 0)
+          + points;
+
+      }
+
+    }
+
+
+    try{
+      const data = await api(`/api/orders/${encodeURIComponent(orderId)}/status`, {
+        method:"PATCH",
+        body:JSON.stringify({status})
+      });
+      if(data.order){
+        const i = orders.findIndex(o => o.id === orderId);
+        if(i >= 0) orders[i] = data.order;
+      }
+      await loadAdminData();
+      showToast("تم تحديث حالة الطلب");
+    }catch(error){
+      order.status = oldStatus;
+      alert(error.message || "تعذر تحديث الطلب");
+    }
+
+  }
+
+
+  /* =========================
+     CUSTOMERS
+  ========================= */
+
+  function renderCustomersTable(){
+
+    const tbody =
+      document.getElementById(
+        "customersTable"
+      );
+
+
+    if(!tbody) return;
+
+
+    if(users.length === 0){
+
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="3">
+            لا يوجد عملاء حتى الآن.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    tbody.innerHTML =
+      users.map(user => `
+
+        <tr>
+
+          <td>
+            ${escapeHTML(user.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(user.contact)}
+          </td>
+
+          <td>
+            ⭐ ${Number(user.points || 0)}
+          </td>
+
+        </tr>
+
+      `).join("");
+
+  }
+
+
+  /* =========================
+     INITIALIZE
+  ========================= */
+
+  renderProducts();
+  loadRemoteData();
+
+  renderCart();
+
+  updateCartCount();
+
+
+  /*
+    لو فيه Admin Token قديم،
+    نتحقق منه فقط عند فتح الإدارة.
+  */
+
+
+  window.addEventListener(
+    "keydown",
+    event => {
+
+      if(event.key === "Escape"){
+
+        document
+          .querySelectorAll(".modal.active")
+          .forEach(modal => {
+
+            modal.classList.remove("active");
+
+          });
+
+      }
+
+    }
+  );
+
+
+  /*
+    إغلاق الـ Modal عند الضغط خارج الصندوق.
+  */
+
+  document
+    .querySelectorAll(".modal")
+    .forEach(modal => {
+
+      modal.addEventListener(
+        "click",
+        event => {
+
+          if(event.target === modal){
+
+            modal.classList.remove(
+              "active"
+            );
+
+          }
+
+        }
+      );
+
+    });
+
+</script>
+
+</body>
+</html>
